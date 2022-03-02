@@ -1,8 +1,9 @@
 const express = require("express");
 const app = express();
+const env = require("dotenv")
 
 app.use(express.json());
-
+env.config();
 app.get("/", (req, res)=>{
     res.send("<h1>Welcome to the world of Bajaj<h1/>")
 })
@@ -36,6 +37,6 @@ app.post("/bfhl",(req, res) => {
       }
 })
 
-app.listen(8000, () => {
+app.listen(process.env.PORT || 8000, () => {
   console.log("Backed Is Conected");
 });
